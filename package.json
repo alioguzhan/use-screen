@@ -1,0 +1,66 @@
+{
+  "name": "use-screen",
+  "version": "1.0.0",
+  "description": "custom react hook for screen and device information",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "cross-env CI=1 jest --coverage",
+    "coverage": "codecov -e TRAVIS_NODE_VERSION -f coverage/*.json",
+    "prepare": "npm run build"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alioguzhan/use-screen.git"
+  },
+  "author": "Ali Oguzhan Yildiz <aoguzhanyildiz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alioguzhan/use-screen/issues"
+  },
+  "homepage": "https://github.com/alioguzhan/use-screen#readme",
+  "peerDependencies": {
+    "react": "16.11.0",
+    "react-dom": "16.11.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@types/jest": "^24.0.20",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/react-test-renderer": "^16.9.1",
+    "codecov": "^3.6.1",
+    "cross-env": "^6.0.3",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "rollup": "^1.26.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.25.1",
+    "standard-version": "^7.0.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}

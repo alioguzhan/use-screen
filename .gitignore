@@ -123,6 +123,8 @@ public/
 # DynamoDB Local files
 .dynamodb/
 
+dist
+build
 ### react ###
 .DS_*
 **/*.backup.*
