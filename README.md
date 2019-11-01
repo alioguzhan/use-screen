@@ -4,7 +4,7 @@
 
 
 [![NPM](https://img.shields.io/npm/v/use-screen.svg)](https://www.npmjs.com/package/use-screen)
-[![npm](https://img.shields.io/npm/dm/use-screen.svg)](https://www.npmjs.com/package/react-editext)
+[![npm](https://img.shields.io/npm/dm/use-screen.svg)](https://www.npmjs.com/package/use-screen)
 [![codecov](https://codecov.io/gh/alioguzhan/use-screen/branch/master/graph/badge.svg?token=htwLgAlLBc)](https://codecov.io/gh/alioguzhan/use-screen)
 [![Github](https://github.com/alioguzhan/use-screen/workflows/build/badge.svg)](https://github.com/alioguzhan/use-screen/actions)
 
