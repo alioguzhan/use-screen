@@ -4,6 +4,14 @@
   "description": "custom react hook for screen and device information",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "keywords": [
+    "screen",
+    "use screen",
+    "responsive",
+    "screen width",
+    "hooks",
+    "react"
+  ],
   "files": [
     "dist"
   ],

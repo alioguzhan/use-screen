@@ -33,7 +33,7 @@ interface State {
   isComputer: boolean,
   isLargeScreen: boolean,
   isWideScreen: boolean,
-  width: number
+  screenWidth: number
 }
 
 type ActionType = {
@@ -47,7 +47,7 @@ export const initialState: State = {
   isComputer: false,
   isLargeScreen: false,
   isWideScreen: false,
-  width: window.innerWidth
+  screenWidth: window.innerWidth
 }
 export const reducer = (state: State, action: ActionType) => {
   switch (action.type) {
@@ -62,7 +62,7 @@ export const reducer = (state: State, action: ActionType) => {
     case 'setWide':
       return { ...initialState, isWideScreen: true }
     case 'setWidth':
-      return { ...state, width: action.value }
+      return { ...state, screenWidth: action.value }
     /* istanbul ignore next line */
     default:
       return initialState

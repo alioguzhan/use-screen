@@ -19,11 +19,11 @@ test('should return the result object', () => {
 
 test('should respond to window resize', () => {
   const { result } = renderHook(() => useScreen())
-  expect(result.current.width).toBe(window.innerWidth)
+  expect(result.current.screenWidth).toBe(window.innerWidth)
   act(() => {
     resizeWindow(1071, 1453)
   })
-  expect(result.current.width).toBe(1071)
+  expect(result.current.screenWidth).toBe(1071)
 })
 
 test('should set isMobile to true', () => {
