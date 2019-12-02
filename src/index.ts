@@ -85,9 +85,9 @@ export default function useScreen () {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   /**
-                         * Metrics and categories are based on Semantic UI.
-                         * https://github.com/Semantic-Org/Semantic-UI-React/blob/128e95d3241eb024d4409e7d64d15ea254cf3ed6/src/addons/Responsive/Responsive.js#L47
-                         */
+   * Metrics and categories are based on Semantic UI.
+   * https://github.com/Semantic-Org/Semantic-UI-React/blob/128e95d3241eb024d4409e7d64d15ea254cf3ed6/src/addons/Responsive/Responsive.js#L47
+   */
   const _calculate = (width: number) => {
     let actionType: ActionType
     if (width <= viewPorts.mobile.maxWidth) actionType = { type: 'setMobile' }
@@ -103,8 +103,7 @@ export default function useScreen () {
   }
   useEffect(() => {
     window.onresize = () => {
-      const width = window.innerWidth
-      _calculate(width)
+      _calculate(window.innerWidth)
     }
   }, [])
   return state
