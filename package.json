@@ -1,6 +1,6 @@
 {
   "name": "use-screen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "custom react hook for screen and device information",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
