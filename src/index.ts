@@ -34,6 +34,7 @@ interface State {
   isLargeScreen: boolean;
   isWideScreen: boolean;
   screenWidth: number;
+  screenHeight: number;
 }
 
 type ActionType = {
@@ -43,7 +44,8 @@ type ActionType = {
     | 'setComputer'
     | 'setLarge'
     | 'setWide'
-    | 'setWidth';
+    | 'setWidth'
+    | 'setHeight';
   value?: number | undefined;
 };
 
@@ -54,8 +56,9 @@ export const initialState: State = {
   isLargeScreen: false,
   isWideScreen: false,
   screenWidth: window.innerWidth,
+  screenHeight: window.innerHeight,
 };
-export const reducer = (state: State, action: ActionType) => {
+export const reducer = (state: State, action: ActionType): Partial<State> => {
   switch (action.type) {
     case 'setMobile':
       return { ...initialState, ...{ isMobile: true, width: action.value } };
@@ -69,6 +72,8 @@ export const reducer = (state: State, action: ActionType) => {
       return { ...initialState, isWideScreen: true };
     case 'setWidth':
       return { ...state, screenWidth: action.value };
+    case 'setHeight':
+      return { ...state, screenHeight: action.value };
     /* istanbul ignore next line */
     default:
       return initialState;
@@ -113,6 +118,7 @@ export default function useScreen() {
   useEffect(() => {
     window.onresize = () => {
       _calculate(window.innerWidth);
+      dispatch({ type: 'setHeight', value: window.innerHeight });
     };
   }, []);
   return state;

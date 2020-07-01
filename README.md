@@ -39,7 +39,8 @@ interface State {
   isComputer: boolean, // > 992px
   isLargeScreen: boolean, // < 1920px
   isWideScreen: boolean, // > 1920px
-  screenWidth: number // current screen width
+  screenWidth: number // current screen width (innerWidth)
+  screenHeight: number // current screen height (innerHeight)
 }
 ```
 

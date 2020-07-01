@@ -24,6 +24,7 @@ test('should respond to window resize', () => {
     resizeWindow(1071, 1453)
   })
   expect(result.current.screenWidth).toBe(1071)
+  expect(result.current.screenHeight).toBe(1453)
 })
 
 test('should set isMobile to true', () => {
