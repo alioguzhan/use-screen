@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/alioguzhan/use-screen/compare/v1.0.3...v1.1.0) (2020-07-01)
+
+
+### Features
+
+* add `screenHeight` to the return value ([42e67d8](https://github.com/alioguzhan/use-screen/commit/42e67d8daef76e07f20f49f045d9eb0ed7458e02))
+
 ### [1.0.3](https://github.com/alioguzhan/use-screen/compare/v1.0.2...v1.0.3) (2020-04-23)
 
 
