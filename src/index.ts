@@ -46,7 +46,7 @@ type ActionType = {
     | 'setWide'
     | 'setWidth'
     | 'setHeight';
-  value?: number | undefined;
+  value?: number;
 };
 
 export const initialState: State = {
@@ -58,7 +58,7 @@ export const initialState: State = {
   screenWidth: window.innerWidth,
   screenHeight: window.innerHeight,
 };
-export const reducer = (state: State, action: ActionType): Partial<State> => {
+export const reducer = (state: State, action: ActionType): State => {
   switch (action.type) {
     case 'setMobile':
       return { ...initialState, ...{ isMobile: true, width: action.value } };
@@ -71,9 +71,9 @@ export const reducer = (state: State, action: ActionType): Partial<State> => {
     case 'setWide':
       return { ...initialState, isWideScreen: true };
     case 'setWidth':
-      return { ...state, screenWidth: action.value };
+      return { ...state, screenWidth: action.value! };
     case 'setHeight':
-      return { ...state, screenHeight: action.value };
+      return { ...state, screenHeight: action.value! };
     /* istanbul ignore next line */
     default:
       return initialState;
@@ -99,7 +99,9 @@ export default function useScreen() {
    * Metrics and categories are based on Semantic UI.
    * https://github.com/Semantic-Org/Semantic-UI-React/blob/128e95d3241eb024d4409e7d64d15ea254cf3ed6/src/addons/Responsive/Responsive.js#L47
    */
-  const _calculate = (width: number) => {
+  const _calculate = (event: UIEvent) => {
+    const width = (event.target as Window).innerWidth;
+    const height = (event.target as Window).innerHeight;
     let actionType: ActionType;
     if (width <= viewPorts.mobile.maxWidth) actionType = { type: 'setMobile' };
     else if (width <= viewPorts.tablet.maxWidth)
@@ -114,12 +116,10 @@ export default function useScreen() {
       dispatch({ type: 'setComputer', value: width });
 
     dispatch({ type: 'setWidth', value: width });
+    dispatch({ type: 'setHeight', value: height });
   };
   useEffect(() => {
-    window.onresize = () => {
-      _calculate(window.innerWidth);
-      dispatch({ type: 'setHeight', value: window.innerHeight });
-    };
+    window.onresize = _calculate;
   }, []);
   return state;
 }
