@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useLayoutEffect, useReducer } from 'react';
 
 interface ViewPort {
   minWidth: number;
@@ -71,9 +71,9 @@ export const reducer = (state: State, action: ActionType): State => {
     case 'setWide':
       return { ...initialState, isWideScreen: true };
     case 'setWidth':
-      return { ...state, screenWidth: action.value! };
+      return { ...state, screenWidth: action.value as number };
     case 'setHeight':
-      return { ...state, screenHeight: action.value! };
+      return { ...state, screenHeight: action.value as number };
     /* istanbul ignore next line */
     default:
       return initialState;
@@ -95,31 +95,35 @@ export const reducer = (state: State, action: ActionType): State => {
 export default function useScreen() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  /**
-   * Metrics and categories are based on Semantic UI.
-   * https://github.com/Semantic-Org/Semantic-UI-React/blob/128e95d3241eb024d4409e7d64d15ea254cf3ed6/src/addons/Responsive/Responsive.js#L47
-   */
-  const _calculate = (event: UIEvent) => {
-    const width = (event.target as Window).innerWidth;
-    const height = (event.target as Window).innerHeight;
-    let actionType: ActionType;
-    if (width <= viewPorts.mobile.maxWidth) actionType = { type: 'setMobile' };
-    else if (width <= viewPorts.tablet.maxWidth)
-      actionType = { type: 'setTablet' };
-    else if (width <= viewPorts.largeScreen.maxWidth)
-      actionType = { type: 'setLarge' };
-    else actionType = { type: 'setWide' };
+  useLayoutEffect(() => {
+    /**
+     * Metrics and categories are based on Semantic UI.
+     * https://github.com/Semantic-Org/Semantic-UI-React/blob/128e95d3241eb024d4409e7d64d15ea254cf3ed6/src/addons/Responsive/Responsive.js#L47
+     */
+    const calculate = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      let actionType: ActionType;
+      if (width <= viewPorts.mobile.maxWidth)
+        actionType = { type: 'setMobile' };
+      else if (width <= viewPorts.tablet.maxWidth)
+        actionType = { type: 'setTablet' };
+      else if (width <= viewPorts.largeScreen.maxWidth)
+        actionType = { type: 'setLarge' };
+      else actionType = { type: 'setWide' };
 
-    dispatch({ ...actionType, value: width });
+      dispatch({ ...actionType, value: width });
 
-    if (width >= viewPorts.computer.minWidth)
-      dispatch({ type: 'setComputer', value: width });
+      if (width >= viewPorts.computer.minWidth)
+        dispatch({ type: 'setComputer', value: width });
 
-    dispatch({ type: 'setWidth', value: width });
-    dispatch({ type: 'setHeight', value: height });
-  };
-  useEffect(() => {
-    window.onresize = _calculate;
+      dispatch({ type: 'setWidth', value: width });
+      dispatch({ type: 'setHeight', value: height });
+    };
+
+    window.addEventListener('resize', calculate);
+    calculate();
+    return () => window.removeEventListener('resize', calculate);
   }, []);
   return state;
 }
