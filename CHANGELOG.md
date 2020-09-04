@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/alioguzhan/use-screen/compare/v1.1.2...v1.1.3) (2020-09-04)
+
+
+### Bug Fixes
+
+* upgrade deps to fix vulnerabilities ([b3dcd50](https://github.com/alioguzhan/use-screen/commit/b3dcd502cc6e9c1cfaf8ae99e1158de77c527020))
+
 ### [1.1.2](https://github.com/alioguzhan/use-screen/compare/v1.1.1...v1.1.2) (2020-09-04)
 
 
