@@ -30,6 +30,10 @@ const { isMobile, isWideScreen, screenWidth } = useScreen()
 // use screen width and other variables as you like
 ```
 
+There is also a working live example as a sandbox:
+
+[![Edit use-screen-hook](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/use-screen-hook-80toq?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Return Value
 
 ```ts
