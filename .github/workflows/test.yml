@@ -1,4 +1,4 @@
-name: build
+name: Tests
 
 on:
   pull_request:
@@ -10,23 +10,20 @@ on:
 
 jobs:
   test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    name: Test on node ${{ matrix.node }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: [10, 11, 12]
+        node: [16, 18, 20]
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: npm install, build, test and coverage
         env:
           SKIP_PREFLIGHT_CHECK: true
-          CODECOV_TOKEN: ${{ secrets.codecov_token }}
         run: |
-          npm install
-          npm run build --if-present
-          npm run test:ci
-          npm run coverage
+          npm ci
+          npm run test
