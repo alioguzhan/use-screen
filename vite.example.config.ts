@@ -1,11 +1,12 @@
 /// <reference types="vitest" />
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  root: "example",
+  base: mode === 'development' ? '/' : '/use-screen/',
+  root: 'example',
   build: {
-    outDir: "build",
+    outDir: 'build',
   },
-});
+}));
