@@ -2,7 +2,6 @@
 
 > Custom React hook for screen and device information
 
-
 [![NPM](https://img.shields.io/npm/v/use-screen.svg)](https://www.npmjs.com/package/use-screen)
 [![npm](https://img.shields.io/npm/dm/use-screen.svg)](https://www.npmjs.com/package/use-screen)
 [![codecov](https://codecov.io/gh/alioguzhan/use-screen/branch/master/graph/badge.svg?token=htwLgAlLBc)](https://codecov.io/gh/alioguzhan/use-screen)
@@ -11,7 +10,7 @@
 ## Install
 
 ```bash
-npm install --save use-screen
+npm install use-screen
 ```
 
 Or with yarn:
@@ -39,8 +38,8 @@ There is also a working live example as a sandbox:
 ```ts
 interface State {
   isMobile: boolean, // < 768px
-  isTablet: boolean, // < 992px
-  isComputer: boolean, // > 992px
+  isTablet: boolean, // < 1280px
+  isComputer: boolean, // > 1280px
   isLargeScreen: boolean, // < 1920px
   isWideScreen: boolean, // > 1920px
   screenWidth: number // current screen width (innerWidth)
