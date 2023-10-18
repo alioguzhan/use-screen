@@ -22,12 +22,14 @@ yarn add use-screen
 ## Usage
 
 ```js
-import useScreen from 'use-screen'
+import useScreen from 'use-screen';
 
-const { isMobile, isWideScreen, screenWidth } = useScreen()
+const { isMobile, isWideScreen, screenWidth } = useScreen();
 
 // use screen width and other variables as you like
 ```
+
+See the website to see how it works: [https://alioguzhan.github.io/use-screen/](https://alioguzhan.github.io/use-screen/)
 
 There is also a working live example as a sandbox:
 
@@ -37,13 +39,13 @@ There is also a working live example as a sandbox:
 
 ```ts
 interface State {
-  isMobile: boolean, // < 768px
-  isTablet: boolean, // < 1280px
-  isComputer: boolean, // > 1280px
-  isLargeScreen: boolean, // < 1920px
-  isWideScreen: boolean, // > 1920px
-  screenWidth: number // current screen width (innerWidth)
-  screenHeight: number // current screen height (innerHeight)
+  isMobile: boolean; // < 768px
+  isTablet: boolean; // < 1280px
+  isComputer: boolean; // > 1280px
+  isLargeScreen: boolean; // < 1920px
+  isWideScreen: boolean; // > 1920px
+  screenWidth: number; // current screen width (innerWidth)
+  screenHeight: number; // current screen height (innerHeight)
 }
 ```
 
