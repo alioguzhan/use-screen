@@ -1,11 +1,14 @@
 # use-screen
 
+[![FreePalestine.Dev](https://freepalestine.dev/header/1)](https://freepalestine.dev)
+
 > Custom React hook for screen and device information
 
 [![NPM](https://img.shields.io/npm/v/use-screen.svg)](https://www.npmjs.com/package/use-screen)
 [![npm](https://img.shields.io/npm/dm/use-screen.svg)](https://www.npmjs.com/package/use-screen)
 [![codecov](https://codecov.io/gh/alioguzhan/use-screen/branch/master/graph/badge.svg?token=htwLgAlLBc)](https://codecov.io/gh/alioguzhan/use-screen)
 [![Github](https://github.com/alioguzhan/use-screen/workflows/build/badge.svg)](https://github.com/alioguzhan/use-screen/actions)
+[![FreePalestine.Dev](https://freepalestine.dev/badge?t=d&u=0&r=1)](https://freepalestine.dev)
 
 ## Install
 
