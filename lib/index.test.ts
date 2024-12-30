@@ -1,25 +1,24 @@
-/* eslint-disable no-undef */
-import { act, renderHook } from "@testing-library/react";
-import { expect, test } from "vitest";
-import useScreen, { initialState, Viewports } from "./index";
+import { act, renderHook } from '@testing-library/react';
+import { expect, test } from 'vitest';
+import useScreen, { initialState, Viewports } from './index';
 
 window.resizeTo = (width, height) => {
-  Object.assign(window, {
-    innerWidth: width,
-    innerHeight: height,
-  }).dispatchEvent(new Event("resize"));
+  window.innerWidth = width || window.innerWidth;
+  window.innerHeight = height || window.innerHeight;
+  window.dispatchEvent(new Event('resize'));
 };
+
 const resizeWindow = (width: number, height: number): void => {
   window.resizeTo(width, height);
 };
 
-test("should return the result object", () => {
+test('should return the result object', () => {
   const { result } = renderHook(() => useScreen());
-  const t = Object.keys(initialState).every((k) => Object.keys(result.current).includes(k));
+  const t = Object.keys(initialState).every((k) => Object.keys(result.current).indexOf(k) > -1);
   expect(t).toBe(true);
 });
 
-test("should respond to window resize", () => {
+test('should respond to window resize', () => {
   const { result } = renderHook(() => useScreen());
   expect(result.current.screenWidth).toBe(window.innerWidth);
   expect(result.current.screenHeight).toBe(window.innerHeight);
@@ -30,7 +29,7 @@ test("should respond to window resize", () => {
   expect(result.current.screenHeight).toBe(1453);
 });
 
-test("should set isMobile to true", () => {
+test('should set isMobile to true', () => {
   const { result } = renderHook(() => useScreen());
   expect(result.current.isMobile).toBeFalsy();
   act(() => {
@@ -40,7 +39,7 @@ test("should set isMobile to true", () => {
   expect(result.current.isComputer).toBeFalsy();
 });
 
-test("should set isTablet to true", () => {
+test('should set isTablet to true', () => {
   const { result } = renderHook(() => useScreen());
   expect(result.current.isTablet).toBeFalsy();
   act(() => {
@@ -50,7 +49,7 @@ test("should set isTablet to true", () => {
   expect(result.current.isMobile).toBeFalsy();
 });
 
-test("should set isComputer to true", () => {
+test('should set isComputer to true', () => {
   const { result } = renderHook(() => useScreen());
   expect(result.current.isComputer).toBeFalsy();
   act(() => {
@@ -61,7 +60,7 @@ test("should set isComputer to true", () => {
   expect(result.current.isTablet).toBeFalsy();
 });
 
-test("should set isLargeScreen to true", () => {
+test('should set isLargeScreen to true', () => {
   const { result } = renderHook(() => useScreen());
   act(() => {
     resizeWindow(Viewports.largeScreen.max, 800);
@@ -72,7 +71,7 @@ test("should set isLargeScreen to true", () => {
   expect(result.current.isTablet).toBeFalsy();
 });
 
-test("should set isWideScreen to true", () => {
+test('should set isWideScreen to true', () => {
   const { result } = renderHook(() => useScreen());
   expect(result.current.isWideScreen).toBeFalsy();
   act(() => {
