@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.0](https://github.com/alioguzhan/use-screen/compare/v2.0.0...v3.0.0) (2024-12-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for Node 16
+
+### Bug Fixes
+
+* re-create package-lock.json to fix security alerts ([a4396cd](https://github.com/alioguzhan/use-screen/commit/a4396cdd5fe14f15b2987c9426a315e5754a6360))
+* support for React 19 ([5f80639](https://github.com/alioguzhan/use-screen/commit/5f80639230d7bb912403d156d394983a19ab9e8c))
+
+
+### Miscellaneous Chores
+
+* downgrade release-please version ([22bf288](https://github.com/alioguzhan/use-screen/commit/22bf288bb54ddc19ff24e4e240404f9eaeec93a5))
+* release-notes ([5f80639](https://github.com/alioguzhan/use-screen/commit/5f80639230d7bb912403d156d394983a19ab9e8c))
+
 ## [2.0.0](https://github.com/alioguzhan/use-screen/compare/v1.1.3...v2.0.0) (2023-10-18)
 
 
