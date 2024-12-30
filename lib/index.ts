@@ -1,11 +1,11 @@
-import { useLayoutEffect, useReducer } from "react";
+import { useLayoutEffect, useReducer } from 'react';
 
 export interface Viewport {
   min: number;
   max: number;
 }
 
-export type ViewportName = "mobile" | "tablet" | "computer" | "largeScreen" | "wideScreen";
+export type ViewportName = 'mobile' | 'tablet' | 'computer' | 'largeScreen' | 'wideScreen';
 
 /** Viewport breakpoints */
 export const Viewports: Record<ViewportName, Viewport> = {
@@ -42,7 +42,7 @@ interface State {
 }
 
 type ActionType = {
-  type: "setMobile" | "setTablet" | "setComputer" | "setLarge" | "setWide" | "setWidth" | "setHeight";
+  type: 'setMobile' | 'setTablet' | 'setComputer' | 'setLarge' | 'setWide' | 'setWidth' | 'setHeight';
   value?: number;
 };
 
@@ -58,19 +58,19 @@ export const initialState: State = {
 
 const reducer = (state: State, action: ActionType): State => {
   switch (action.type) {
-    case "setMobile":
+    case 'setMobile':
       return { ...initialState, ...{ isMobile: true, width: action.value } };
-    case "setTablet":
+    case 'setTablet':
       return { ...initialState, isTablet: true };
-    case "setComputer":
+    case 'setComputer':
       return { ...state, isComputer: true };
-    case "setLarge":
+    case 'setLarge':
       return { ...initialState, isLargeScreen: true };
-    case "setWide":
+    case 'setWide':
       return { ...initialState, isWideScreen: true };
-    case "setWidth":
+    case 'setWidth':
       return { ...state, screenWidth: action.value as number };
-    case "setHeight":
+    case 'setHeight':
       return { ...state, screenHeight: action.value as number };
     /* c8 ignore next 2 */
     default:
@@ -98,22 +98,22 @@ export function useScreen() {
       const width = window.innerWidth;
       const height = window.innerHeight;
       let actionType: ActionType;
-      if (width <= Viewports.mobile.max) actionType = { type: "setMobile" };
-      else if (width <= Viewports.tablet.max) actionType = { type: "setTablet" };
-      else if (width <= Viewports.largeScreen.max) actionType = { type: "setLarge" };
-      else actionType = { type: "setWide" };
+      if (width <= Viewports.mobile.max) actionType = { type: 'setMobile' };
+      else if (width <= Viewports.tablet.max) actionType = { type: 'setTablet' };
+      else if (width <= Viewports.largeScreen.max) actionType = { type: 'setLarge' };
+      else actionType = { type: 'setWide' };
 
       dispatch({ ...actionType, value: width });
 
-      if (width >= Viewports.computer.min) dispatch({ type: "setComputer", value: width });
+      if (width >= Viewports.computer.min) dispatch({ type: 'setComputer', value: width });
 
-      dispatch({ type: "setWidth", value: width });
-      dispatch({ type: "setHeight", value: height });
+      dispatch({ type: 'setWidth', value: width });
+      dispatch({ type: 'setHeight', value: height });
     };
 
-    window.addEventListener("resize", calculate);
+    window.addEventListener('resize', calculate);
     calculate();
-    return () => window.removeEventListener("resize", calculate);
+    return () => window.removeEventListener('resize', calculate);
   }, []);
   return state;
 }
