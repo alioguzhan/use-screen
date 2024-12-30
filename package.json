@@ -34,7 +34,7 @@
     "prepare": "npm run build"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
